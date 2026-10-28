@@ -190,10 +190,16 @@ const HIDDEN_SECTIONS = ['conversation', 'customFields']
 const TICKET_SECTIONS = ['activity', 'customFields']
 
 /** The storybook right panel for one channel: its tab, top section, sub-sections in order and "Customize widgets". */
-export function ChannelRightPanel({ channel, inboxName, unassigned, conversationId, ticketId, onLinkClick, linkedConversations = [], onViewAll, onUnlink, onOpenConversation }: {
+export function ChannelRightPanel({ channel, inboxName, unassigned, conversationId, ticketId, assignee, onAssigneeChange, status, onStatusChange, onLinkClick, linkedConversations = [], onViewAll, onUnlink, onOpenConversation }: {
   channel: ChannelId
   /** Email only: the conversation is a ticket with this ID, so the panel uses the ticket layout. */
   ticketId?: string
+  /** The conversation's assignee (`none` when unassigned), when the caller keeps it. Leave out to let the field manage itself. */
+  assignee?: string
+  onAssigneeChange?: (value: string) => void
+  /** The conversation's status, when the caller keeps it (one value per conversation). */
+  status?: 'open' | 'pending' | 'closed'
+  onStatusChange?: (value: 'open' | 'pending' | 'closed') => void
   inboxName?: string
   /** The conversation is in an Unassigned view, so the Assignee starts at None. */
   unassigned?: boolean
@@ -226,8 +232,8 @@ export function ChannelRightPanel({ channel, inboxName, unassigned, conversation
     <RightPanel key={isTicket ? 'ticket' : channel} aria-label="Details" tabs={def.tabs} customizeWidgets={def.footer.some((f) => f.id === 'customizeWidgets')}>
       <RightPanelTop title={inboxName ?? sample.inboxName}>
         {topFields.map((f) => {
-          if (f.kind === 'assignee') return <AssigneeField key={`${f.id}-${conversationId}-${unassigned}`} defaultValue={unassigned ? 'none' : undefined} />
-          if (f.kind === 'status') return <StatusField key={f.id} />
+          if (f.kind === 'assignee') return <AssigneeField key={`${f.id}-${conversationId}-${unassigned}`} value={assignee} onChange={onAssigneeChange} defaultValue={unassigned ? 'none' : undefined} />
+          if (f.kind === 'status') return <StatusField key={`${f.id}-${conversationId}`} value={status} onChange={onStatusChange} />
           if (f.id === 'ticketId') return <Row key={f.id} icon="ticket" label={f.label}><span className="hot-rp-ticket-id">{ticketId}</span></Row>
           if (f.kind === 'tags') return (
             <Row key={f.id} icon={f.icon} label={f.label}>

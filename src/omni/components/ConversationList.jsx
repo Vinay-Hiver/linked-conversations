@@ -32,8 +32,8 @@ const ConversationList = ({ conversations, selectedId, onSelect, activeFilter })
 
       <div className="card-list">
         {conversations.map((convo) => (
-          <div 
-            key={convo.id}
+          <div key={convo.id} className="email-card-wrap">
+          <div
             className={`email-card ${selectedId === convo.id ? 'active' : ''}`}
             onClick={() => onSelect(convo.id)}
           >
@@ -56,6 +56,7 @@ const ConversationList = ({ conversations, selectedId, onSelect, activeFilter })
               </div>
               <p className="preview-text">{convo.preview}</p>
             </div>
+          </div>
           </div>
         ))}
       </div>

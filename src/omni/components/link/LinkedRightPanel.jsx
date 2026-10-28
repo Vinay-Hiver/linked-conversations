@@ -6,6 +6,7 @@ import { useCurrentUser } from '../../CurrentUser';
 import LinkConversationModal, { CHANNEL_ICON } from './LinkConversationModal';
 import UnlinkConfirmModal from './UnlinkConfirmModal';
 import { useConversationViewer } from '../viewer/viewerContext';
+import { useConversationFields } from '../../ConversationFields';
 
 /**
  * The storybook right panel plus the link flow: "Link" opens the Link
@@ -17,6 +18,7 @@ export default function LinkedRightPanel({ conversationId, ...panelProps }) {
   const { linksOf, link, unlink } = useLinkedConversations();
   const { user } = useCurrentUser();
   const viewer = useConversationViewer();
+  const { assigneeOf, assigneeNameOf, setAssignee, statusOf, setStatus } = useConversationFields();
   const [open, setOpen] = React.useState(false);
   const [viewAll, setViewAll] = React.useState(false);
   const [unlinking, setUnlinking] = React.useState(null); // id of the conversation to unlink
@@ -34,8 +36,10 @@ export default function LinkedRightPanel({ conversationId, ...panelProps }) {
       name: c.name,
       subject: c.subject,
       date: c.date,
-      status: c.view === 'Closed' ? 'closed' : 'open',
-      assignee: c.view === 'Mine' ? user.name : undefined,
+      // From the Status field of that conversation's right panel, so it updates when that changes.
+      status: statusOf(c.id),
+      // From the Assignee field of that conversation's right panel; no chip when it is None.
+      assignee: assigneeNameOf(c.id),
       inbox: c.inbox,
       icon: iconFor(c, CHANNEL_ICON),
       ticketId: c.ticketId,
@@ -53,6 +57,10 @@ export default function LinkedRightPanel({ conversationId, ...panelProps }) {
         <ChannelRightPanel
           {...panelProps}
           conversationId={id}
+          assignee={id ? assigneeOf(id) : undefined}
+          onAssigneeChange={id ? (value) => setAssignee(id, value) : undefined}
+          status={id ? statusOf(id) : undefined}
+          onStatusChange={id ? (value) => setStatus(id, value) : undefined}
           onLinkClick={openModal}
           linkedConversations={linkedConversations}
           onViewAll={() => setViewAll(true)}

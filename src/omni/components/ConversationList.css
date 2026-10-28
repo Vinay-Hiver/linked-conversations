@@ -73,28 +73,37 @@
 .card-list {
   flex: 1;
   overflow-y: auto;
-  padding: 12px;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
   user-select: none;
   -webkit-user-select: none;
 }
 
 /* Email Card Styles */
+/* Same spacing as the Slack list: an 8px strip with a full-width line under it, holding an 8px-padded card */
+.email-card-wrap {
+  flex: none;
+  padding: 8px;
+  border-bottom: 1px solid var(--slateBorderMild);
+}
+/* No divider after the last card */
+.email-card-wrap:last-child { border-bottom: 0; }
+
 .email-card {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 12px;
+  gap: 8px;
+  padding: 8px;
   border-radius: 8px;
   background-color: white;
   border: 1px solid transparent;
-  border-bottom: 1px solid #edf1f6;
   cursor: pointer;
   transition: all 0.2s;
   box-sizing: border-box;
 }
+
 
 .email-card:hover {
   background-color: #f8fafc;

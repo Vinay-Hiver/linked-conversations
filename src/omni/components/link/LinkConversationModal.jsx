@@ -8,6 +8,7 @@ import { Icon } from '../../../icons/Icon';
 import { INITIAL_VIEWS_BY_INBOX } from '../../data/dummyViews';
 import { searchConversations, iconFor } from '../../data/conversationIndex';
 import { useCurrentUser } from '../../CurrentUser';
+import { useConversationFields } from '../../ConversationFields';
 import './LinkConversationModal.css';
 import '../modalMotion.css';
 import { useModalExit } from '../modalMotion';
@@ -162,6 +163,7 @@ export default function LinkConversationModal({ conversationId, inboxName, alrea
   const [closing, exit] = useModalExit();
   const close = () => exit(onClose);
   const { user } = useCurrentUser();
+  const { assigneeNameOf } = useConversationFields();
   const inboxes = React.useMemo(
     () => Object.keys(INITIAL_VIEWS_BY_INBOX).filter((n) => !user.hiddenInboxes?.includes(n)),
     [user]
@@ -229,7 +231,7 @@ export default function LinkConversationModal({ conversationId, inboxName, alrea
                           words={words}
                           selected={selected.includes(item.id)}
                           onToggle={() => toggle(item.id)}
-                          assigneeName={item.view === 'Mine' ? user.name : undefined}
+                          assigneeName={assigneeNameOf(item.id)}
                         />
                       </React.Fragment>
                     ))}

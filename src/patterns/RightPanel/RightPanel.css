@@ -229,7 +229,8 @@
 .hot-rp-chip { max-width: 100%; border-color: var(--slateSurfaceSubtle300); background: var(--slateSurfaceSubtle100Hover); color: var(--slateTextBody); }
 .hot-rp-chip svg { flex: none; width: 12px; height: 12px; }
 .hot-rp-chip span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.hot-rp-status-chip--open, .hot-rp-status-chip--pending { border-color: var(--pastelYellowBorderDefault); background: var(--pastelYellowSurfaceSubtle); color: var(--pastelYellowTextTitle); }
+.hot-rp-status-chip--open { border-color: var(--pastelYellowBorderDefault); background: var(--pastelYellowSurfaceSubtle); color: var(--pastelYellowTextTitle); }
+.hot-rp-status-chip--pending { border-color: var(--primaryBorderLighter); background: var(--primarySurfaceSubtle); color: var(--primaryTextLabel); }
 .hot-rp-status-chip--closed { border-color: var(--pastelGreenBorderDefault); background: var(--pastelGreenSurfaceSubtle); color: var(--pastelGreenTextTitle); }
 
 /* "View all" under the cards: a text link */

@@ -37,6 +37,8 @@
   padding: 8px;
   font-family: inherit;
 }
+/* No divider after the last card */
+.slack-list__item:last-child { border-bottom: 0; }
 /* Inset, rounded selection highlight (same treatment as the Chat list). */
 .slack-list__inner {
   display: flex;

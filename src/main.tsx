@@ -9,6 +9,7 @@ import './omni/index.css'
 import App from './omni/App.jsx'
 import { CurrentUserProvider } from './omni/CurrentUser.jsx'
 import { LinkedConversationsProvider } from './omni/LinkedConversations.jsx'
+import { ConversationFieldsProvider } from './omni/ConversationFields.jsx'
 import { ConversationViewerProvider } from './omni/components/viewer/ConversationViewer.jsx'
 
 createRoot(document.getElementById('root')!).render(
@@ -16,11 +17,13 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       {/* Links are shared by everyone, so they sit outside the per-user view (which resets on switch). */}
       <LinkedConversationsProvider>
-        <CurrentUserProvider>
-          <ConversationViewerProvider>
-            <App />
-          </ConversationViewerProvider>
-        </CurrentUserProvider>
+        <ConversationFieldsProvider>
+          <CurrentUserProvider>
+            <ConversationViewerProvider>
+              <App />
+            </ConversationViewerProvider>
+          </CurrentUserProvider>
+        </ConversationFieldsProvider>
       </LinkedConversationsProvider>
     </BrowserRouter>
     {import.meta.env.DEV && <Agentation appName="Linked Conversations" />}
