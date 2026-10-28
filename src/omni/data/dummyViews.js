@@ -31,40 +31,40 @@ const makeInbox = (views, fav = ['mine'], channel = 'email') => ({
 
 // Two Shared Inboxes per channel. Order shown in the sidebar: Chat, Slack, WhatsApp, SMS, Voice, Email.
 export const INITIAL_VIEWS_BY_INBOX = {
-  'Website Chat': makeInbox([
+  'Chat Support 01': makeInbox([
     ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'chat'),
-  'Product Help Chat': makeInbox([
+  'Chat Support 02': makeInbox([
     ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'chat'),
-  'Slack Support': makeInbox([
+  'Slack Support 01': makeInbox([
     ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'slack'),
-  'Slack Escalations': makeInbox([
+  'Slack Support 02': makeInbox([
     ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'slack'),
-  'WhatsApp Support': makeInbox([
+  'WhatsApp Support 01': makeInbox([
     ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'whatsapp'),
-  'WhatsApp Orders': makeInbox([
+  'WhatsApp Support 02': makeInbox([
     ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'whatsapp'),
-  'SMS Support': makeInbox([
+  'SMS Support 01': makeInbox([
     ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'sms'),
-  'SMS Delivery Updates': makeInbox([
+  'SMS Support 02': makeInbox([
     ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'sms'),
-  'Phone Support': makeInbox([
+  'Voice Support 01': makeInbox([
     ...systemViews({ mine: 2, unassigned: 1, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'voice'),
-  'Billing Hotline': makeInbox([
+  'Voice Support 02': makeInbox([
     ...systemViews({ mine: 2, unassigned: 1, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'voice'),
-  'Email Support': makeInbox([
+  'Email Support 01': makeInbox([
     ...systemViews({ mine: 4, unassigned: 3, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine', 'unassigned'], 'email'),
-  'Billing & Refunds': makeInbox([
+  'Email Support 02': makeInbox([
     ...systemViews({ mine: 4, unassigned: 3, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine', 'unassigned'], 'email'),
 };

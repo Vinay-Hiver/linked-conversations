@@ -13,6 +13,8 @@ import SettingsPage from './pages/SettingsPage';
 import MySettingsPage from './pages/MySettingsPage';
 import { useState } from 'react';
 import { conversationsData } from './data/emailConversations';
+import { INITIAL_VIEWS_BY_INBOX } from './data/dummyViews';
+import { useCurrentUser } from './CurrentUser';
 
 
 // Fallback dummy threads for views (e.g. Team, Tickets, Pending, Closed,
@@ -96,9 +98,15 @@ const generateDummyConversations = (inbox, type) => {
   });
 };
 
+// Each user opens on the Unassigned view of the first inbox they are a member of
+// (Chat Support 01 for Michael, Chat Support 02 for Jim).
+const firstInboxFor = (user) =>
+  Object.keys(INITIAL_VIEWS_BY_INBOX).find((name) => !user.hiddenInboxes?.includes(name));
+
 function App() {
-  const [selectedId, setSelectedId] = useState('website-chat-unassigned-0');
-  const [activeFilter, setActiveFilter] = useState({ inbox: 'Website Chat', type: 'Unassigned' });
+  const { user } = useCurrentUser();
+  const [activeFilter, setActiveFilter] = useState(() => ({ inbox: firstInboxFor(user), type: 'Unassigned' }));
+  const [selectedId, setSelectedId] = useState(null);
 
   // Prototype role — All Views pins Team Favourites as Admin. No toggle UI.
   const activeRole = 'Admin';

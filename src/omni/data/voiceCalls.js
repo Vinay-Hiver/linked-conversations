@@ -2,7 +2,7 @@
 // The call UI is ported from omni-voice-channel (ActiveCallView): an ongoing call
 // shows the connected bar; an ended call shows the recording, Summary and Transcript.
 
-export const VOICE_INBOXES = ['Phone Support', 'Billing Hotline'];
+export const VOICE_INBOXES = ['Voice Support 01', 'Voice Support 02'];
 
 // The transcript of the sample recording (src/omni/assets/voice/sample-audio.mp3),
 // as in omni-voice-channel. Every ended call plays the same recording.
@@ -22,9 +22,9 @@ export const SAMPLE_TRANSCRIPT = [
 
 export const VOICE_CALLS = [
   {
-    id: 'phone-support-mine-0',
+    id: 'voice-support-01-mine-0',
     direction: 'Inbound',
-    inbox: 'Phone Support',
+    inbox: 'Voice Support 01',
     view: 'Mine',
     name: null, // number only: the caller has no saved name
     phone: '+91 98765 43210',
@@ -35,10 +35,10 @@ export const VOICE_CALLS = [
     summary: "The customer called to inquire about the delay in their order #12345. I explained that the shipment was held up due to weather conditions at the hub. They were understanding and requested an email update once the status changes to 'Out for delivery'. I have set a follow-up task for tomorrow morning.",
   },
   {
-    id: 'phone-support-mine-1',
+    id: 'voice-support-01-mine-1',
     direction: 'Inbound',
     duration: '4m 32s',
-    inbox: 'Phone Support',
+    inbox: 'Voice Support 01',
     view: 'Mine',
     name: 'Dakota Wilder',
     phone: '+1 (555) 014-2290',
@@ -48,10 +48,10 @@ export const VOICE_CALLS = [
     summary: 'Dakota called because their invoice for February was charged twice. I confirmed the duplicate charge and raised a refund for the second payment. They asked for a confirmation email with the refund reference, which I sent during the call.',
   },
   {
-    id: 'phone-support-unassigned-0',
+    id: 'voice-support-01-unassigned-0',
     direction: 'Inbound',
     duration: '2m 18s',
-    inbox: 'Phone Support',
+    inbox: 'Voice Support 01',
     view: 'Unassigned',
     name: 'Priya Nair',
     phone: '+1 (555) 018-7731',
@@ -61,9 +61,9 @@ export const VOICE_CALLS = [
     summary: 'Priya wanted to upgrade her team from the Pro plan to Enterprise and asked about pricing for 40 seats. She would like a demo of the SLA and reporting features before deciding, and asked for someone from sales to call her back this week.',
   },
   {
-    id: 'billing-hotline-mine-0',
+    id: 'voice-support-02-mine-0',
     direction: 'Inbound',
-    inbox: 'Billing Hotline',
+    inbox: 'Voice Support 02',
     view: 'Mine',
     name: 'Marcus Lee',
     phone: '+1 (555) 012-4478',
@@ -74,10 +74,10 @@ export const VOICE_CALLS = [
     summary: 'Marcus called about an unexpected charge on his card after downgrading his plan. I confirmed the downgrade took effect at the end of the billing cycle, so the charge was for the last month on the old plan. He accepted the explanation and asked for a copy of the invoice by email.',
   },
   {
-    id: 'billing-hotline-mine-1',
+    id: 'voice-support-02-mine-1',
     direction: 'Inbound',
     duration: '6m 05s',
-    inbox: 'Billing Hotline',
+    inbox: 'Voice Support 02',
     view: 'Mine',
     name: 'Sofia Reyes',
     phone: '+1 (555) 016-3302',
@@ -87,10 +87,10 @@ export const VOICE_CALLS = [
     summary: "Sofia's card was declined at renewal and her account was paused. I helped her update the payment method and retried the charge, which went through. The account is active again and she received the payment receipt.",
   },
   {
-    id: 'billing-hotline-unassigned-0',
+    id: 'voice-support-02-unassigned-0',
     direction: 'Inbound',
     duration: '1m 47s',
-    inbox: 'Billing Hotline',
+    inbox: 'Voice Support 02',
     view: 'Unassigned',
     name: null, // number only: the caller has no saved name
     phone: '+44 20 7946 0958',

@@ -5,67 +5,67 @@ import { VOICE_INBOXES, voiceInboxTotal, voiceViewCount } from './voiceCalls';
 // a few conversations; the sidebar shows the per-view count and the inbox total.
 
 export const CHANNEL_BY_INBOX = {
-  'Website Chat': 'chat',
-  'Product Help Chat': 'chat',
-  'Slack Support': 'slack',
-  'Slack Escalations': 'slack',
-  'WhatsApp Support': 'whatsapp',
-  'WhatsApp Orders': 'whatsapp',
-  'SMS Support': 'sms',
-  'SMS Delivery Updates': 'sms',
+  'Chat Support 01': 'chat',
+  'Chat Support 02': 'chat',
+  'Slack Support 01': 'slack',
+  'Slack Support 02': 'slack',
+  'WhatsApp Support 01': 'whatsapp',
+  'WhatsApp Support 02': 'whatsapp',
+  'SMS Support 01': 'sms',
+  'SMS Support 02': 'sms',
 };
 
 // Slack #channel chip per inbox.
 const SLACK_CHANNEL = {
-  'Slack Support': 'support',
-  'Slack Escalations': 'escalations',
+  'Slack Support 01': 'support',
+  'Slack Support 02': 'escalations',
 };
 
 // The customer's first message in each conversation, per inbox (Unassigned first, then Mine).
 const PREVIEWS_BY_INBOX = {
-  'Website Chat': [
+  'Chat Support 01': [
     'The chat widget is not loading on mobile',
     'Is the pro plan available monthly?',
     'Can we get a demo for our team next week?',
     'How do I reset my password?',
   ],
-  'Product Help Chat': [
+  'Chat Support 02': [
     'How do I export my reports to CSV?',
     'The dashboard filters are not saving',
     'Can I add a custom field to contacts?',
     'Where do I find the API keys?',
   ],
-  'Slack Support': [
+  'Slack Support 01': [
     'Our SSO login is failing for new users',
     'Can someone help us set up the Salesforce sync?',
     'We need two more seats added to our workspace',
     'Webhooks stopped firing since this morning',
   ],
-  'Slack Escalations': [
+  'Slack Support 02': [
     'URGENT: production dashboard is down for our team',
     'Data from last week is missing in reports',
     'Customer is threatening to churn over the outage',
     'Invoice shows the wrong plan, needs review today',
   ],
-  'WhatsApp Support': [
+  'WhatsApp Support 01': [
     'Hi, I cannot log in to the app',
     'My payment failed but money was deducted',
     'How do I change my delivery address?',
     'Is there a warranty on this product?',
   ],
-  'WhatsApp Orders': [
+  'WhatsApp Support 02': [
     'Where is my order #48213?',
     'I received the wrong size, can I exchange it?',
     'Can I cancel my order placed today?',
     'The package arrived damaged',
   ],
-  'SMS Support': [
+  'SMS Support 01': [
     'Need help resetting my account PIN',
     'Please call me back about my ticket',
     'STOP sending promo messages',
     'Is the store open on Sunday?',
   ],
-  'SMS Delivery Updates': [
+  'SMS Support 02': [
     'My delivery was marked done but I got nothing',
     'Can the driver leave it at the front desk?',
     'Reschedule my delivery to Friday please',

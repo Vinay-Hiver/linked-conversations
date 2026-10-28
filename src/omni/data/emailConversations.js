@@ -4,7 +4,7 @@ export const conversationsData = [
   // --- Email: Mine (2) ---
   {
     id: 1,
-    inbox: 'Email Support',
+    inbox: 'Email Support 01',
     type: 'Mine',
     sender: 'John Smith',
     initial: 'J',
@@ -46,7 +46,7 @@ export const conversationsData = [
   {
     id: 2,
     ticketId: 'TKT#3', // a ticket: email conversation with the ticket right panel
-    inbox: 'Email Support',
+    inbox: 'Email Support 01',
     type: 'Mine',
     sender: 'Alice Johnson',
     initial: 'A',
@@ -80,7 +80,7 @@ export const conversationsData = [
   // --- Email: Unassigned (2) ---
   {
     id: 4,
-    inbox: 'Email Support',
+    inbox: 'Email Support 01',
     type: 'Unassigned',
     sender: 'Emily Watson',
     initial: 'E',
@@ -113,7 +113,7 @@ export const conversationsData = [
   {
     id: 5,
     ticketId: 'TKT#7', // a ticket: email conversation with the ticket right panel
-    inbox: 'Email Support',
+    inbox: 'Email Support 01',
     type: 'Unassigned',
     sender: 'David Chen',
     initial: 'D',
@@ -153,10 +153,10 @@ export const conversationsData = [
     ]
   },
 
-  // --- Billing & Refunds: Mine (2) ---
+  // --- Email Support 02: Mine (2) ---
   {
     id: 21,
-    inbox: 'Billing & Refunds',
+    inbox: 'Email Support 02',
     type: 'Mine',
     sender: 'George Baker',
     initial: 'G',
@@ -189,7 +189,7 @@ export const conversationsData = [
   {
     id: 22,
     ticketId: 'TKT#12', // a ticket: email conversation with the ticket right panel
-    inbox: 'Billing & Refunds',
+    inbox: 'Email Support 02',
     type: 'Mine',
     sender: 'Emma Stone',
     initial: 'E',
@@ -220,10 +220,10 @@ export const conversationsData = [
     ]
   },
 
-  // --- Billing & Refunds: Unassigned (2) ---
+  // --- Email Support 02: Unassigned (2) ---
   {
     id: 23,
-    inbox: 'Billing & Refunds',
+    inbox: 'Email Support 02',
     type: 'Unassigned',
     sender: 'Customer Care',
     initial: 'C',
@@ -256,7 +256,7 @@ export const conversationsData = [
   {
     id: 24,
     ticketId: 'TKT#15', // a ticket: email conversation with the ticket right panel
-    inbox: 'Billing & Refunds',
+    inbox: 'Email Support 02',
     type: 'Unassigned',
     sender: 'Liam Neeson',
     initial: 'L',
@@ -291,7 +291,7 @@ export const conversationsData = [
   {
     id: 31,
     ticketId: 'TKT#18', // a ticket: email conversation with the ticket right panel
-    inbox: "Email Support",
+    inbox: "Email Support 01",
     type: "Mine",
     sender: "Nina Patel",
     initial: "N",
@@ -324,7 +324,7 @@ export const conversationsData = [
   {
     id: 32,
     ticketId: 'TKT#21', // a ticket: email conversation with the ticket right panel
-    inbox: "Email Support",
+    inbox: "Email Support 01",
     type: "Mine",
     sender: "Omar Haddad",
     initial: "O",
@@ -357,7 +357,7 @@ export const conversationsData = [
   {
     id: 33,
     ticketId: 'TKT#24', // a ticket: email conversation with the ticket right panel
-    inbox: "Email Support",
+    inbox: "Email Support 01",
     type: "Unassigned",
     sender: "Clara Jensen",
     initial: "C",
@@ -381,7 +381,7 @@ export const conversationsData = [
   {
     id: 34,
     ticketId: 'TKT#27', // a ticket: email conversation with the ticket right panel
-    inbox: "Billing & Refunds",
+    inbox: "Email Support 02",
     type: "Mine",
     sender: "Hugo Martins",
     initial: "H",
@@ -414,7 +414,7 @@ export const conversationsData = [
   {
     id: 35,
     ticketId: 'TKT#30', // a ticket: email conversation with the ticket right panel
-    inbox: "Billing & Refunds",
+    inbox: "Email Support 02",
     type: "Mine",
     sender: "Priya Raman",
     initial: "P",
@@ -447,7 +447,7 @@ export const conversationsData = [
   {
     id: 36,
     ticketId: 'TKT#33', // a ticket: email conversation with the ticket right panel
-    inbox: "Billing & Refunds",
+    inbox: "Email Support 02",
     type: "Unassigned",
     sender: "Sam Okoro",
     initial: "S",

@@ -1,8 +1,8 @@
 import React from 'react';
 
 // The people you can view the prototype as. Michael's view is the default.
-// Jim's view is a replica of Michael's, except that Jim is not a member of some
-// inboxes (`hiddenInboxes`, 4 of the 12, at least one left per channel).
+// Michael is a member of every inbox. Jim is only a member of the "02" inboxes
+// (`hiddenInboxes` lists the ones he is not part of).
 export const USERS = [
   { id: 'michael', name: 'Michael Scott', email: 'michael.scott@hiverhq.co.in', color: 'red', hiddenInboxes: [] },
   {
@@ -10,7 +10,7 @@ export const USERS = [
     name: 'Jim Halpert',
     email: 'jim.halpert@hiverhq.co.in',
     color: 'lightBlue',
-    hiddenInboxes: ['Product Help Chat', 'WhatsApp Support', 'Billing Hotline', 'Email Support'],
+    hiddenInboxes: ['Chat Support 01', 'Slack Support 01', 'WhatsApp Support 01', 'SMS Support 01', 'Voice Support 01', 'Email Support 01'],
   },
 ];
 
