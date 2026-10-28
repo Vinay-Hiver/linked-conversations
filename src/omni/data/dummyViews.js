@@ -62,10 +62,10 @@ export const INITIAL_VIEWS_BY_INBOX = {
     ...systemViews({ mine: 2, unassigned: 1, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine'], 'voice'),
   'Email Support': makeInbox([
-    ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
+    ...systemViews({ mine: 4, unassigned: 3, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine', 'unassigned'], 'email'),
   'Billing & Refunds': makeInbox([
-    ...systemViews({ mine: 2, unassigned: 2, team: 0, tickets: 0, pending: 0, closed: 0 }),
+    ...systemViews({ mine: 4, unassigned: 3, team: 0, tickets: 0, pending: 0, closed: 0 }),
   ], ['mine', 'unassigned'], 'email'),
 };
 

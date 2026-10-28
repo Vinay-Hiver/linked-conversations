@@ -285,5 +285,187 @@ export const conversationsData = [
         body: 'Your cancellation and refund request has been logged.'
       }
     ]
+  },
+
+  // --- More tickets: 3 per Email inbox ---
+  {
+    id: 31,
+    ticketId: 'TKT#18', // a ticket: email conversation with the ticket right panel
+    inbox: "Email Support",
+    type: "Mine",
+    sender: "Nina Patel",
+    initial: "N",
+    avatarColor: "var(--pastelGreenBorderDefault)",
+    time: "Feb 4, 03:05 PM",
+    subject: "Export to CSV fails",
+    preview: "The CSV export stops at 1,000 rows.",
+    threadCount: 2,
+    messages: [
+      {
+        id: 'm1',
+        sender: "Nina Patel",
+        email: "nina.patel@brightlane.io",
+        time: "Feb 4, 03:05 PM",
+        initial: "N",
+        avatarColor: "var(--pastelGreenBorderDefault)",
+        body: "Hi Support,\n\nWhen I export our contacts to CSV, the file stops at 1,000 rows. We have around 4,200 contacts. Is there a limit?"
+      },
+      {
+        id: 'm2',
+        sender: "Ruben Geidt",
+        email: "ruben@acme.com",
+        time: "Feb 4, 03:05 PM",
+        initial: "R",
+        avatarColor: "var(--pastelLightBlueBorderDefault)",
+        body: "Hi Nina,\n\nThanks for flagging this. I have raised a ticket with engineering and will update you as soon as the fix is out."
+      }
+    ]
+  },
+  {
+    id: 32,
+    ticketId: 'TKT#21', // a ticket: email conversation with the ticket right panel
+    inbox: "Email Support",
+    type: "Mine",
+    sender: "Omar Haddad",
+    initial: "O",
+    avatarColor: "var(--pastelOrangeBorderDefault)",
+    time: "Feb 3, 05:40 PM",
+    subject: "Two-factor codes not arriving",
+    preview: "I am not receiving the 2FA codes by SMS.",
+    threadCount: 2,
+    messages: [
+      {
+        id: 'm1',
+        sender: "Omar Haddad",
+        email: "omar@haddadlabs.com",
+        time: "Feb 3, 05:40 PM",
+        initial: "O",
+        avatarColor: "var(--pastelOrangeBorderDefault)",
+        body: "Hello,\n\nSince yesterday I am not receiving two-factor codes by SMS, so I cannot sign in. My number has not changed."
+      },
+      {
+        id: 'm2',
+        sender: "Ruben Geidt",
+        email: "ruben@acme.com",
+        time: "Feb 3, 05:40 PM",
+        initial: "R",
+        avatarColor: "var(--pastelLightBlueBorderDefault)",
+        body: "Hi Omar,\n\nI have switched your account to email-based codes for now so you can sign in. We are checking the SMS provider."
+      }
+    ]
+  },
+  {
+    id: 33,
+    ticketId: 'TKT#24', // a ticket: email conversation with the ticket right panel
+    inbox: "Email Support",
+    type: "Unassigned",
+    sender: "Clara Jensen",
+    initial: "C",
+    avatarColor: "var(--pastelVioletBorderDefault)",
+    time: "Feb 4, 09:12 AM",
+    subject: "Dashboard loads very slowly",
+    preview: "The analytics dashboard takes over a minute to load.",
+    threadCount: 1,
+    messages: [
+      {
+        id: 'm1',
+        sender: "Clara Jensen",
+        email: "clara.jensen@northpeak.co",
+        time: "Feb 4, 09:12 AM",
+        initial: "C",
+        avatarColor: "var(--pastelVioletBorderDefault)",
+        body: "Hi,\n\nOur analytics dashboard takes more than a minute to load every morning. It was fast last week. Can you take a look?"
+      }
+    ]
+  },
+  {
+    id: 34,
+    ticketId: 'TKT#27', // a ticket: email conversation with the ticket right panel
+    inbox: "Billing & Refunds",
+    type: "Mine",
+    sender: "Hugo Martins",
+    initial: "H",
+    avatarColor: "var(--pastelPurpleBorderDefault)",
+    time: "Feb 4, 02:30 PM",
+    subject: "Invoice address is wrong",
+    preview: "Our invoices still show our old office address.",
+    threadCount: 2,
+    messages: [
+      {
+        id: 'm1',
+        sender: "Hugo Martins",
+        email: "hugo@martinsco.com",
+        time: "Feb 4, 02:30 PM",
+        initial: "H",
+        avatarColor: "var(--pastelPurpleBorderDefault)",
+        body: "Hello,\n\nOur last three invoices still show our old office address. We updated it in settings in January. Can you reissue them?"
+      },
+      {
+        id: 'm2',
+        sender: "Ruben Geidt",
+        email: "ruben@acme.com",
+        time: "Feb 4, 02:30 PM",
+        initial: "R",
+        avatarColor: "var(--pastelLightBlueBorderDefault)",
+        body: "Hi Hugo,\n\nI have corrected the billing address and reissued the three invoices. You should have them in your inbox now."
+      }
+    ]
+  },
+  {
+    id: 35,
+    ticketId: 'TKT#30', // a ticket: email conversation with the ticket right panel
+    inbox: "Billing & Refunds",
+    type: "Mine",
+    sender: "Priya Raman",
+    initial: "P",
+    avatarColor: "var(--pastelRedBorderDefault)",
+    time: "Feb 3, 01:15 PM",
+    subject: "Charged after cancelling",
+    preview: "I cancelled last month but was charged again.",
+    threadCount: 2,
+    messages: [
+      {
+        id: 'm1',
+        sender: "Priya Raman",
+        email: "priya.raman@corvid.ai",
+        time: "Feb 3, 01:15 PM",
+        initial: "P",
+        avatarColor: "var(--pastelRedBorderDefault)",
+        body: "Hi,\n\nI cancelled our subscription on January 12, but we were charged again on February 1. Please refund this charge."
+      },
+      {
+        id: 'm2',
+        sender: "Ruben Geidt",
+        email: "ruben@acme.com",
+        time: "Feb 3, 01:15 PM",
+        initial: "R",
+        avatarColor: "var(--pastelLightBlueBorderDefault)",
+        body: "Hi Priya,\n\nYou are right, the cancellation did not go through. I have refunded the February charge and closed the subscription."
+      }
+    ]
+  },
+  {
+    id: 36,
+    ticketId: 'TKT#33', // a ticket: email conversation with the ticket right panel
+    inbox: "Billing & Refunds",
+    type: "Unassigned",
+    sender: "Sam Okoro",
+    initial: "S",
+    avatarColor: "var(--pastelLightBlueBorderDefault)",
+    time: "Feb 4, 11:48 AM",
+    subject: "Need a VAT invoice",
+    preview: "We need invoices with our VAT number on them.",
+    threadCount: 1,
+    messages: [
+      {
+        id: 'm1',
+        sender: "Sam Okoro",
+        email: "sam.okoro@tidewater.org",
+        time: "Feb 4, 11:48 AM",
+        initial: "S",
+        avatarColor: "var(--pastelLightBlueBorderDefault)",
+        body: "Hello,\n\nOur finance team needs invoices that include our VAT number. Could you add it to our account and resend January's invoice?"
+      }
+    ]
   }
 ];
