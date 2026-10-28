@@ -96,6 +96,14 @@ const PREVIEWS = [
   'How do I reset my password?',
   'Please rate the chat',
 ];
+// Live chat visitors who never shared their name get a generated username (as in the product),
+// e.g. "summer-wave-360". Used for some Chat conversations.
+const VISITOR_NAMES = [
+  'summer-wave-360', 'misty-night-872', 'ancient-cloud-624', 'lively-breeze-576',
+  'solitary-sky-507', 'bitter-lake-87', 'polished-breeze-911', 'holy-firefly-0',
+];
+let visitorIdx = 0;
+
 const DATES = ['Jul 23', 'Jul 22', 'Jul 21', 'Jul 20', 'Jul 19'];
 
 const slug = (s) => s.toLowerCase().replace(/\s+/g, '-');
@@ -105,11 +113,14 @@ let globalNameIdx = 0;
 const makeConvos = (inbox, channel, view, count, offset = 0) =>
   Array.from({ length: count }, (_, i) => {
     const idx = globalNameIdx++;
-    const name = NAMES[idx % NAMES.length];
+    // In Chat, every other conversation is an anonymous visitor with a generated username.
+    const isVisitor = channel === 'chat' && i % 2 === 1;
+    const name = isVisitor ? VISITOR_NAMES[visitorIdx++ % VISITOR_NAMES.length] : NAMES[idx % NAMES.length];
     const preview = PREVIEWS_BY_INBOX[inbox]?.[offset + i] ?? PREVIEWS[idx % PREVIEWS.length];
     const color = COLORS[idx % COLORS.length];
     const date = DATES[idx % DATES.length];
-    const email = `${name.toLowerCase().replace(/\s+/g, '.')}@example.com`;
+    // Anonymous visitors have no email.
+    const email = isVisitor ? undefined : `${name.toLowerCase().replace(/\s+/g, '.')}@example.com`;
     const phone = `+1 (555) 01${(10 + (idx % 90)).toString().padStart(2, '0')}`;
     return {
       id: `${slug(inbox)}-${slug(view)}-${i}`,
