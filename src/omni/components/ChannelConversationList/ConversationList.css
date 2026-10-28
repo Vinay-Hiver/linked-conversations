@@ -1,0 +1,128 @@
+.conversation-list {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  flex-shrink: 0;
+  height: 100%;
+  background: var(--slateSurfaceWhite);
+  border-right: 1px solid var(--slateBorderLight);
+}
+
+.conversation-list__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  flex-shrink: 0;
+  padding: 0 16px 0 19px;
+  border-bottom: 1px solid var(--slate-100);
+  font-family: var(--font-family);
+  font-size: var(--label-medium-size);
+  line-height: var(--label-medium-line-height);
+  color: var(--slateTextBody);
+}
+
+.conversation-list__body {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.conversation-list__item-wrap {
+  padding: 8px;
+}
+
+.conversation-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Hover and selected match the Email list's cards (.email-card). */
+.conversation-list__item:hover {
+  background: var(--slateSurfaceSubtle);
+}
+
+.conversation-list__item--selected,
+.conversation-list__item--selected:hover {
+  background: var(--slateSurfaceWhite);
+  border-color: var(--primarySurfaceLighter);
+  box-shadow: 0px 3px 4px 0px rgba(7, 26, 46, 0.08);
+}
+
+.conversation-list__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.conversation-list__title {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: var(--label-small-size);
+  line-height: var(--label-small-line-height);
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conversation-list__date {
+  flex-shrink: 0;
+  font-family: var(--font-family);
+  font-size: var(--body-xsmall-size);
+  line-height: var(--body-xsmall-line-height);
+  color: var(--slateTextSubtle);
+}
+
+.conversation-list__preview {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--body-small-size);
+  line-height: var(--body-small-line-height);
+  color: var(--slateTextSubtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conversation-list__divider {
+  height: 1px;
+  margin: 0 8px;
+  background: var(--slateBorderMild);
+}
+
+.conversation-avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 45px;
+  background: var(--pastelLightBlueSurfaceDefault);
+  color: var(--slateSurfaceWhite);
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--font-family);
+}
+
+.conversation-avatar__online {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 7.5px;
+  height: 7.5px;
+  border-radius: 50%;
+  background: var(--green-500);
+  border: 1px solid var(--slateSurfaceWhite);
+}

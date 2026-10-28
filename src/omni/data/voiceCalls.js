@@ -1,0 +1,108 @@
+// Dummy calls for the Voice Shared Inboxes, grouped by view like channelChats.js.
+// The call UI is ported from omni-voice-channel (ActiveCallView): an ongoing call
+// shows the connected bar; an ended call shows the recording, Summary and Transcript.
+
+export const VOICE_INBOXES = ['Phone Support', 'Billing Hotline'];
+
+// The transcript of the sample recording (src/omni/assets/voice/sample-audio.mp3),
+// as in omni-voice-channel. Every ended call plays the same recording.
+export const SAMPLE_TRANSCRIPT = [
+  { time: '00:00', name: 'Chris Nash', text: 'Hey everybody, my name is Chris Nash.', isAgent: true },
+  { time: '00:02', name: 'Chris Nash', text: "It's a new year, which means it's time for a new podcast.", isAgent: true },
+  { time: '00:05', name: 'Chris Nash', text: 'Now unlike all of your other favorite podcasts, this one will only take one minute of your time, every time, all the time.', isAgent: true },
+  { time: '00:13', name: 'Chris Nash', text: "Sometimes it'll be just me.", isAgent: true },
+  { time: '00:15', name: 'Chris Nash', text: "Other times it'll be just you, seriously, submit stuff, your opinions, videos, I want to know what you have to say, I want to share what you have to say.", isAgent: true },
+  { time: '00:25', name: 'Chris Nash', text: "Other times I'll be joined by excellent guests, like Cameron Hart of the Turnamental podcast.", isAgent: true },
+  { time: '00:30', name: 'Cameron Hart', text: '"Hey Nash, that one minute podcast idea, don\'t do it. It\'s a terrible idea."', isAgent: false },
+  { time: '00:34', name: 'Chris Nash', text: 'Swell.', isAgent: true },
+  { time: '00:35', name: 'Chris Nash', text: 'Some episodes will be really funny. Other episodes will be really serious.', isAgent: true },
+  { time: '00:40', name: 'Chris Nash', text: 'But I guarantee that every episode will be the best minute of your day.', isAgent: true },
+  { time: '00:45', name: 'Chris Nash', text: 'Warning, depending on your preferences, one minute podcast may be the worst minute of your day.', isAgent: true },
+];
+
+export const VOICE_CALLS = [
+  {
+    id: 'phone-support-mine-0',
+    direction: 'Inbound',
+    inbox: 'Phone Support',
+    view: 'Mine',
+    name: null, // number only: the caller has no saved name
+    phone: '+91 98765 43210',
+    date: 'Mar 12',
+    time: 'Mar 12, 11:22 AM',
+    status: 'ongoing',
+    connectedSeconds: 42,
+    summary: "The customer called to inquire about the delay in their order #12345. I explained that the shipment was held up due to weather conditions at the hub. They were understanding and requested an email update once the status changes to 'Out for delivery'. I have set a follow-up task for tomorrow morning.",
+  },
+  {
+    id: 'phone-support-mine-1',
+    direction: 'Inbound',
+    duration: '4m 32s',
+    inbox: 'Phone Support',
+    view: 'Mine',
+    name: 'Dakota Wilder',
+    phone: '+1 (555) 014-2290',
+    date: 'Mar 12',
+    time: 'Mar 12, 09:48 AM',
+    status: 'ended',
+    summary: 'Dakota called because their invoice for February was charged twice. I confirmed the duplicate charge and raised a refund for the second payment. They asked for a confirmation email with the refund reference, which I sent during the call.',
+  },
+  {
+    id: 'phone-support-unassigned-0',
+    direction: 'Inbound',
+    duration: '2m 18s',
+    inbox: 'Phone Support',
+    view: 'Unassigned',
+    name: 'Priya Nair',
+    phone: '+1 (555) 018-7731',
+    date: 'Mar 11',
+    time: 'Mar 11, 04:15 PM',
+    status: 'ended',
+    summary: 'Priya wanted to upgrade her team from the Pro plan to Enterprise and asked about pricing for 40 seats. She would like a demo of the SLA and reporting features before deciding, and asked for someone from sales to call her back this week.',
+  },
+  {
+    id: 'billing-hotline-mine-0',
+    direction: 'Inbound',
+    inbox: 'Billing Hotline',
+    view: 'Mine',
+    name: 'Marcus Lee',
+    phone: '+1 (555) 012-4478',
+    date: 'Mar 12',
+    time: 'Mar 12, 10:05 AM',
+    status: 'ongoing',
+    connectedSeconds: 95,
+    summary: 'Marcus called about an unexpected charge on his card after downgrading his plan. I confirmed the downgrade took effect at the end of the billing cycle, so the charge was for the last month on the old plan. He accepted the explanation and asked for a copy of the invoice by email.',
+  },
+  {
+    id: 'billing-hotline-mine-1',
+    direction: 'Inbound',
+    duration: '6m 05s',
+    inbox: 'Billing Hotline',
+    view: 'Mine',
+    name: 'Sofia Reyes',
+    phone: '+1 (555) 016-3302',
+    date: 'Mar 11',
+    time: 'Mar 11, 02:40 PM',
+    status: 'ended',
+    summary: "Sofia's card was declined at renewal and her account was paused. I helped her update the payment method and retried the charge, which went through. The account is active again and she received the payment receipt.",
+  },
+  {
+    id: 'billing-hotline-unassigned-0',
+    direction: 'Inbound',
+    duration: '1m 47s',
+    inbox: 'Billing Hotline',
+    view: 'Unassigned',
+    name: null, // number only: the caller has no saved name
+    phone: '+44 20 7946 0958',
+    date: 'Mar 10',
+    time: 'Mar 10, 06:12 PM',
+    status: 'ended',
+    summary: 'The caller asked whether annual plans can be refunded when cancelled partway through the year. They did not share an account email, so I explained the pro-rated refund policy and asked them to reply from their account email to start the request.',
+  },
+];
+
+/** What to call a caller: their name, or their number when there is no name. */
+export const callerLabel = (call) => call.name || call.phone;
+
+export const voiceViewCount = (inbox, view) => VOICE_CALLS.filter((c) => c.inbox === inbox && c.view === view).length;
+export const voiceInboxTotal = (inbox) => VOICE_CALLS.filter((c) => c.inbox === inbox).length;

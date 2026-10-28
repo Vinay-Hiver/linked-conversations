@@ -1,0 +1,7 @@
+node_modules
+dist
+*.local
+.DS_Store
+
+# Internal design context (customer and internal links); kept out of the public repo
+linked-conversations-context.md

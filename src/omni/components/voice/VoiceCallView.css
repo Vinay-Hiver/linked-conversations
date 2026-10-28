@@ -1,0 +1,596 @@
+/* Ported from omni-voice-channel (src/pages/ActiveCallView.css). Every rule is scoped under .active-call-page so it does not restyle the other inboxes. */
+.active-call-page {
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background-color: var(--slateSurfaceSlate150, #edf1f6);
+}
+
+.active-call-page /* 1. Left Panel (Call List) */
+.call-list-panel {
+  width: 310px;
+  background-color: var(--slateSurfaceWhite, white);
+  border-right: 1px solid var(--slateBorderMild, #edf1f6);
+  display: flex;
+  flex-direction: column;
+}
+
+.active-call-page .subject-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 10px 8px;
+  height: 44px;
+  border-bottom: 1px solid var(--slateBorderMild, #edf1f6);
+}
+
+.active-call-page .subject-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.active-call-page .icon-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 4px;
+}
+
+.active-call-page .icon-btn:hover {
+  background-color: var(--slateSurfaceSubtle100-hover, #f1f5f9);
+}
+
+.active-call-page .subject-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.active-call-page .vertical-divider {
+  width: 1px;
+  height: 16px;
+  background-color: var(--slateBorderMild, #edf1f6);
+}
+
+.active-call-page .subject-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--slateTextBody, #334155);
+  margin: 0;
+}
+
+.active-call-page .call-action-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active-call-page .call-action-item .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+  background-color: #334155;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s, visibility 0.1s;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.active-call-page .call-action-item:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.active-call-page .call-cards-container {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.active-call-page .voice-call-card {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Hover and selected match the Email list's cards (.email-card). */
+.active-call-page .voice-call-card:hover {
+  background-color: var(--slateSurfaceSubtle);
+}
+
+.active-call-page .voice-call-card.active,
+.active-call-page .voice-call-card.active:hover {
+  background-color: var(--slateSurfaceWhite);
+  border-color: var(--primarySurfaceLighter);
+  box-shadow: 0px 3px 4px 0px rgba(7, 26, 46, 0.08);
+}
+
+.active-call-page .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active-call-page .caller-basic {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.active-call-page .caller-name {
+  font-size: 14px;
+  color: var(--slateTextBody, #334155);
+}
+
+.active-call-page .card-date {
+  font-size: 13px;
+  color: var(--slateTextSubtle, #64758b);
+}
+
+.active-call-page /* 2. Middle Panel (Call Detail) */
+.call-detail-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--slateSurfaceWhite, white);
+}
+
+.active-call-page .detail-status-bar {
+  height: 44px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--slateBorderMild, #edf1f6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.active-call-page .status-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slateTextTitle, #0f172a);
+}
+
+.active-call-page .status-pill-green {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 8px;
+  background-color: var(--successSurfaceSubtle, #d3f4e1);
+  border-radius: 30px;
+  height: 20px;
+}
+
+.active-call-page .status-pill-green span {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--successTextBody, #1b6f41);
+}
+
+.active-call-page .detail-content-area {
+  flex: 1;
+  background-color: var(--slateSurfaceSlate150, #edf1f6);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.active-call-page .call-card-large {
+  background-color: white;
+  border: 1px solid var(--slateBorderMild, #edf1f6);
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(7, 26, 46, 0.04);
+  padding: 12px 12px 24px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.active-call-page .card-header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active-call-page .header-contact {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.active-call-page .avatar-med {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.active-call-page .avatar-med img {
+  width: 100%;
+  height: 100%;
+}
+
+.active-call-page .header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.active-call-page .contact-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slateTextBody, #334155);
+}
+
+.active-call-page .contact-number {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--slateTextSubtle, #64758b);
+}
+
+.active-call-page .header-time {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--slateTextSubtle, #64758b);
+}
+
+.active-call-page .call-player-bar {
+  background-color: var(--slateSurfaceSubtle, #f8fafc);
+  border: 1px solid var(--primaryBorderLighter, #a9c5f9);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.active-call-page .call-player-bar-ended {
+  background-color: var(--slateSurfaceSubtle, #f8fafc);
+  border: 1px solid var(--primaryBorderLighter, #a9c5f9);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.active-call-page .ended-play-btn {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid var(--blueBorderLight, #a9c5f9);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.active-call-page .ended-timeline {
+  flex: 1;
+  height: 4px;
+  background-color: var(--slateSurfaceSubtle200, #e2e8f0);
+  border-radius: 200px;
+}
+
+.active-call-page .ended-time-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slateTextBody, #334155);
+  white-space: nowrap;
+}
+
+.active-call-page .ended-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.active-call-page .ended-action-btn {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid var(--blueBorderLight, #a9c5f9);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.active-call-page .ended-action-btn.blue-bg {
+  background-color: var(--blueTextSubtle, #276cf0);
+  border: none;
+}
+
+.active-call-page .ended-bottom-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.active-call-page .ended-call-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.active-call-page .ended-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.active-call-page .ended-section-header.clickable {
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.active-call-page .header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.active-call-page .ended-section-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slateTextBody, #334155);
+}
+
+.active-call-page .ended-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.active-call-page .placeholder-bar {
+  height: 8px;
+  border-radius: 20px;
+}
+
+.active-call-page .placeholder-bar.full {
+  width: 100%;
+  background-color: var(--slateSurfaceSlate150, #edf1f6);
+}
+
+.active-call-page .placeholder-bar.short {
+  width: 45%;
+  background-color: var(--slateSurfaceSubtle200, #e2e8f0);
+}
+
+.active-call-page .ended-divider {
+  height: 1px;
+  background-color: var(--slateBorderMild, #edf1f6);
+  margin: 0 -12px;
+}
+
+.active-call-page .ended-section-header.align-start {
+  align-items: flex-start;
+}
+
+.active-call-page .icon-generating-wrapper {
+  /* removed padding-top: 3px */
+}
+
+.active-call-page .generating-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.active-call-page .generating-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slateTextBody, #334155);
+  margin: 0;
+}
+
+.active-call-page .ended-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.active-call-page .final-reveal-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.active-call-page .call-card-large.transcript-open, .active-call-page .call-card-large.transcript-open .ended-bottom-section, .active-call-page .call-card-large.transcript-open .ended-content-wrapper, .active-call-page .call-card-large.transcript-open .final-reveal-wrapper, .active-call-page .call-card-large.transcript-open .ended-call-section.transcript-section {
+  flex: 1;
+  overflow: hidden;
+}
+
+.active-call-page .generating-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--slateTextSubtle, #64758b);
+  margin: 0;
+}
+
+.active-call-page .transcript-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+  overflow-y: auto;
+  min-height: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.active-call-page .transcript-cards-list::-webkit-scrollbar {
+  display: none;
+}
+
+.active-call-page .transcript-card {
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.active-call-page .agent-card {
+  background-color: #f1f5f9;
+}
+
+.active-call-page .customer-card {
+  background-color: #f8fafc;
+}
+
+.active-call-page .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active-call-page .card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.active-call-page .card-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 500;
+  color: white;
+  overflow: hidden;
+}
+
+.active-call-page .agent-avatar {
+  background-color: #d96d71;
+}
+
+.active-call-page .customer-avatar {
+  background-color: #94a3b8;
+}
+
+.active-call-page .card-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+
+.active-call-page .card-time {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64758b;
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+
+.active-call-page .card-body p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #64758b;
+  margin: 0;
+  line-height: 20px;
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+
+.active-call-page /* Animations */
+.fade-out {
+  animation: voiceFadeOut 0.15s forwards ease-out;
+}
+
+.active-call-page .fade-in {
+  animation: voiceFadeIn 0.2s forwards ease-in;
+}
+
+@keyframes voiceFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes voiceFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.active-call-page .chevron-icon {
+  transition: transform 0.2s;
+}
+
+.active-call-page .chevron-icon.up {
+  transform: rotate(180deg);
+}
+
+.active-call-page .summary-dummy-text {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--slateTextBody, #334155);
+  margin: 0;
+}
+
+.active-call-page .player-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 120px;
+}
+
+.active-call-page .player-left span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slateTextBody, #334155);
+}
+
+.active-call-page .player-timer {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slateTextBody, #334155);
+  text-align: right;
+}
+
+.active-call-page .player-actions {
+  display: flex;
+  gap: 8px;
+  width: 120px;
+  justify-content: flex-end;
+}
+
+.active-call-page .player-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  border: 1px solid var(--blueBorderLight, #a9c5f9);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.active-call-page .end-call-btn {
+  background-color: var(--errorSurfaceDisabled, #eb5c5c);
+  border: none;
+}

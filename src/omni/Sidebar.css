@@ -1,0 +1,875 @@
+.sidebar-root {
+  display: flex;
+  height: 100%;
+  border-right: 1px solid var(--slateBorderLight);
+}
+
+/* Mini Sidebar Styles */
+.mini-sidebar {
+  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
+  flex: 0 0 44px;
+  background-color: var(--slateSurfaceDarkest); /* #334155 (Dark theme bg per node 764:5426) */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 8px 12px 8px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.mini-top, .mini-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+}
+
+.mini-top {
+  gap: 10px;
+}
+
+.logo-container {
+  width: 28px;
+  height: 44px;
+  padding: 11px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mini-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  align-items: center;
+}
+
+.mini-item {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.mini-item img {
+  opacity: 0.65;
+  filter: brightness(0) invert(1);
+}
+
+.mini-item:hover {
+  background-color: var(--slateSurfaceDark600); /* #475569 */
+}
+
+.mini-item:hover img {
+  opacity: 0.9;
+}
+
+.mini-item .tooltip {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10px;
+  background-color: #334155; /* Slate 700 - dark slate */
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s, visibility 0.1s;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.mini-item:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mini-item.active {
+  background-color: var(--slateSurfaceDark500); /* surface/dark_500 (#64758b) */
+}
+
+.mini-item.active img {
+  opacity: 1;
+  filter: brightness(0) invert(1);
+}
+
+.notification-wrapper {
+  position: relative;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  background: var(--errorTextSubtle);
+  border: 1px solid var(--slateBorderMild);
+  border-radius: 50%;
+}
+
+.avatar-container {
+  position: relative;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  background-color: var(--pastelRedSurfaceDefault);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--slateSurfaceWhite);
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--slateBorderMild);
+}
+
+.status-indicator.online {
+  background-color: #22c55e; /* Online green - keep for now as it's state-specific or find a token */
+}
+
+/* Main Panel Styles (side-nav-expanded) */
+.side-nav-expanded {
+  width: 240px;
+  background-color: var(--slateSurfaceSubtle);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.panel-header-top {
+  height: 84px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.header-row {
+  height: 27px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-row h1 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--slateTextBody);
+  letter-spacing: -0.01em;
+}
+
+.header-actions {
+  color: var(--slateIconsSubtle);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-icon-btn {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.header-icon-btn:hover {
+  background-color: var(--slateSurfaceSubtle100-hover);
+}
+
+.new-convo-split-btn {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.08));
+}
+
+.new-convo-split-btn button {
+  border: none;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 28px;
+}
+
+.split-btn-main {
+  padding: 6px 8px;
+  border-radius: 8px 0 0 8px;
+}
+
+.split-btn-chevron {
+  padding: 6px 2px;
+  border-radius: 0 8px 8px 0;
+}
+
+.new-convo-split-btn button:hover {
+  background-color: var(--slateSurfaceSubtle100-hover);
+}
+
+.search-container {
+  padding: 0 8px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--slateSurfaceWhite);
+  border: 1px solid var(--slateBorderLight);
+  border-radius: 6px;
+  padding: 4px 8px;
+  gap: 8px;
+  height: 28px;
+}
+
+.search-icon {
+  color: var(--slateTextSubtle);
+  flex-shrink: 0;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  color: var(--slateTextBody);
+  font-family: inherit;
+  background: transparent;
+}
+
+.search-box input::placeholder {
+  color: var(--slateTextSubtle);
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 8px 8px; /* Alignment with x=8 in metadata */
+}
+
+.side-nav-expanded .section-title {
+  padding: 20px 8px 8px;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--slateTextSubtle);
+}
+
+.section-title.margin-top {
+  padding-top: 12px;
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  height: 34px;
+  transition: background-color 0.15s;
+}
+
+.nav-item:hover {
+  background-color: var(--slateSurfaceSubtle100-hover);
+}
+
+.nav-item.active {
+  background-color: var(--primarySurfaceSubtle);
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-content span {
+  font-size: 14px;
+  color: var(--slateTextTitle);
+  font-weight: 400;
+}
+
+.nav-item.active .nav-content span,
+.nav-item.active .count {
+  color: var(--primarySurfaceDefault);
+}
+
+.nav-item.active .nav-content span {
+  font-weight: 500;
+}
+
+.nav-item.active .item-icon {
+  color: var(--primarySurfaceDefault);
+}
+
+.item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Channel icon (mail/chat/slack/whatsapp) — masked so it follows the nav
+   item's current text color, incl. the primary color on the active row. */
+.channel-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask: var(--channel-icon) center / contain no-repeat;
+  mask: var(--channel-icon) center / contain no-repeat;
+}
+
+.accordion-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 16px;
+}
+
+/* Inbox count states:
+   1. collapsed, default  -> show the sum
+   2. collapsed, hover    -> replace sum with chevron
+   3. expanded, default   -> show nothing
+   4. expanded, hover     -> show the up chevron */
+.inbox-sum {
+  font-size: 14px;
+  color: var(--slateTextTitle);
+  text-align: right;
+}
+
+/* Hide the sum on hover (chevron takes over) and whenever expanded. */
+.nav-item.accordion-trigger:hover .inbox-sum,
+.nav-item.accordion-trigger.expanded .inbox-sum {
+  display: none;
+}
+
+.nav-item.accordion-trigger .chevron-icon {
+  width: 14px;
+  height: 14px;
+  display: none; /* only appears on hover */
+  transition: transform 0.2s ease;
+  transform: rotate(0deg); /* Point right when collapsed */
+}
+
+.nav-item.accordion-trigger:hover .chevron-icon {
+  display: block;
+}
+
+.nav-item.accordion-trigger.expanded .chevron-icon,
+.nav-item.accordion-trigger .chevron-icon.up {
+  transform: rotate(90deg); /* Point down when expanded */
+}
+
+/* .nav-group-nested-wrapper's open/close animation is driven inline by the
+   NestedGroup component (MainSidebarPanel.jsx), which measures the exact
+   pixel height and transitions `height` directly. */
+
+.nav-group-nested {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+}
+
+/* Guide line down the nested list, centered under the inbox icon above
+   (nav-item padding-left 8px + half of the 16px icon = 16px), ending at the
+   vertical center of the last row (All Views) — half its 34px height. */
+.nav-group-nested::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 17px;
+  left: 16px;
+  width: 1px;
+  background-color: var(--slateBorderLight);
+}
+
+.nav-group-nested .nav-item {
+  /* Box starts to the right of the guide line (at 16px) with room to
+     spare, so the hover/active background never touches or covers it —
+     padding-left keeps the icon at the same 36px indent as before. */
+  margin-left: 24px;
+  padding-left: 12px;
+}
+
+.count {
+  font-size: 14px;
+  color: var(--slateTextTitle);
+  text-align: right;
+}
+
+.nav-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* All Views Panel */
+.all-views-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--slateTextBody);
+  font-family: inherit;
+}
+
+.back-btn span {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.back-btn:hover {
+  color: var(--slateTextTitle);
+}
+
+.all-views-breadcrumb {
+  padding: 0 8px;
+  font-size: 14px;
+  color: var(--slateTextSubtle);
+}
+
+.all-views-breadcrumb strong {
+  color: var(--slateTextTitle);
+  font-weight: 500;
+}
+
+.all-views-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.view-list {
+  gap: 2px;
+}
+
+.view-list-empty {
+  padding: 0 8px 7px;
+  font-size: 13px;
+  color: var(--slateTextSubtle);
+}
+
+.team-favourites-empty {
+  padding-top: 0;
+}
+
+.view-list-divider {
+  margin: 8px 8px;
+  border-top: 1px solid var(--slateBorderLight);
+}
+
+.view-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 8px;
+  border-radius: 6px;
+  height: 34px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.view-row:hover {
+  background-color: var(--slateSurfaceSubtle100-hover);
+}
+
+.view-row.selected {
+  background-color: var(--primarySurfaceSubtle);
+}
+
+.view-row.selected .view-row-icon,
+.view-row.selected .view-row-name,
+.view-row.selected .view-row-count {
+  color: var(--primarySurfaceDefault);
+}
+
+.view-row.selected .view-row-name {
+  font-weight: 500;
+}
+
+.view-row-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.view-row-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--slateIconsSubtle);
+  flex-shrink: 0;
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+
+.icon-default,
+.icon-drag-handle {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-drag-handle {
+  opacity: 0;
+  cursor: grab;
+  -webkit-user-drag: element;
+  user-drag: element;
+}
+
+.icon-drag-handle svg,
+.icon-drag-handle img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.icon-drag-handle:active {
+  cursor: grabbing;
+}
+
+.draggable-row:hover .icon-default {
+  opacity: 0;
+}
+
+.draggable-row:hover .icon-drag-handle {
+  opacity: 1;
+}
+
+
+.view-row-name {
+  font-size: 14px;
+  color: var(--slateTextTitle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.view-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.view-star-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  color: var(--slateIconsSubtle);
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.view-row:hover .view-star-btn,
+.view-star-btn:has(svg[fill="#eab308"]) {
+  opacity: 1;
+}
+
+.view-star-btn:disabled {
+  cursor: default;
+}
+
+.view-star-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+/* Team Favourite indicator — separate from the personal star, next to it
+   rather than replacing the view's own type icon. Same fixed box as
+   .view-star-wrap so both icon columns line up exactly across rows. */
+.view-team-fav-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: #F5B000;
+  /* No action lives on this icon itself (it's a status indicator, not a
+     button) — keep the default cursor even though the row it sits in is
+     clickable. */
+  cursor: default;
+}
+
+/* For an Agent, the icon reads as a lower-emphasis slate glyph instead of
+   the Admin's gold — dim at rest, full opacity once the row is hovered
+   (which is also when the tooltip explaining it appears). */
+.view-team-fav-indicator.agent-variant {
+  color: var(--slateIconsSubtle);
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.view-row:hover .view-team-fav-indicator.agent-variant,
+.nav-item:hover .view-team-fav-indicator.agent-variant {
+  opacity: 1;
+}
+
+/* Tooltip design from Figma (node 303:3111): dark slate bubble, white
+   12px text. Portaled to <body> (position: fixed, top/left set inline by
+   AllViewsPanel) so it can escape the sidebar's clipped scroll container
+   instead of getting cut off at the panel edge. */
+.view-star-tooltip {
+  position: fixed;
+  transform: translate(-50%, -100%);
+  background-color: var(--slateSurfaceDark600, #475569);
+  color: var(--slateSurfaceWhite, #ffffff);
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.view-star-tooltip-multiline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.view-row-count {
+  font-size: 14px;
+  color: var(--slateTextTitle);
+  /* Fixed width (fits up to 2 digits, e.g. "99") so the star's position
+     never shifts based on how many digits the count has. */
+  width: 20px;
+  min-width: 20px;
+  text-align: right;
+}
+
+.view-kebab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--slateIconsSubtle);
+  /* Fills the wrap so it sits exactly over the count it replaces on hover. */
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.view-row:hover .view-kebab-btn {
+  opacity: 1;
+}
+
+/* The count shown at rest for a custom view — the kebab overlays and
+   replaces it on hover (or while its menu is open). */
+.view-row-count-under {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 14px;
+  color: var(--slateTextTitle);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.1s;
+}
+
+.view-row:hover .view-row-count-under,
+.view-kebab-wrap:has(.menu-open) .view-row-count-under {
+  opacity: 0;
+}
+
+/* The hover/pressed background lives on this inner square, not the full
+   28px alignment column, so it reads as a normal small icon button. */
+.view-kebab-btn-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.view-kebab-btn:hover .view-kebab-btn-inner {
+  background-color: var(--slateSurfaceSubtle200);
+  color: var(--slateTextTitle);
+}
+
+.view-kebab-wrap {
+  position: relative;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+}
+
+/* Keep the kebab visible while its menu is open, even though the menu
+   itself is portaled to <body> (so it can escape the sidebar's clipped
+   scroll container) and is no longer a descendant to key off of. */
+.view-kebab-btn.menu-open {
+  opacity: 1;
+}
+
+.view-kebab-menu {
+  position: fixed;
+  z-index: 1000;
+  background-color: var(--slateSurfaceWhite, #ffffff);
+  border: 0.5px solid var(--slateBorderLight);
+  border-radius: 8px;
+  box-shadow: 0px 8px 8px var(--slateTextCaption, #cbd5e1);
+  padding: 4px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.view-kebab-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--slateTextBody, #334155);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.view-kebab-menu-item:hover {
+  background-color: var(--slateSurfaceSubtle100-hover);
+}
+
+.view-kebab-menu-item svg {
+  flex-shrink: 0;
+  color: var(--slateTextBody, #334155);
+  padding: 3px;
+  box-sizing: content-box;
+}
+
+.view-kebab-menu-item-subtitled {
+  align-items: flex-start;
+}
+
+.view-kebab-menu-item-subtitled svg {
+  margin-top: 3px;
+}
+
+.view-kebab-menu-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: normal;
+}
+
+.view-kebab-menu-item-label {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--slateTextBody, #334155);
+}
+
+.view-kebab-menu-item-subtitle {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--slateTextSubtle, #64758b);
+}
+
+.view-kebab-menu-item-subtitle-warning {
+  color: var(--warningTextBody, #933e0f);
+}
+
+/* At the 5 team-favourite cap: greyed out label/icon, no hover, no click —
+   the warning subtitle above already explains why. */
+.view-kebab-menu-item-disabled {
+  cursor: default;
+}
+
+.view-kebab-menu-item-disabled:hover {
+  background-color: transparent;
+}
+
+.view-kebab-menu-item-disabled svg,
+.view-kebab-menu-item-disabled .view-kebab-menu-item-label {
+  color: var(--slateTextDisabled, #94a3b8);
+}
+
+.view-kebab-menu-divider {
+  border-top: 1px solid var(--slateBorderLight);
+  margin: 4px 4px;
+}

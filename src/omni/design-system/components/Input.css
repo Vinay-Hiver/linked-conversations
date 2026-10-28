@@ -1,0 +1,87 @@
+/* Input / Text Input — HOT Design System (node 6854:3834) */
+.ds-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.ds-input__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--slateTextBody);
+}
+.ds-input__required { color: var(--errorTextSoft); }
+
+/* Field wrapper (holds prefix/suffix + input) */
+.ds-input__field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 12px;
+  background-color: var(--slateSurfaceWhite);
+  border: 1px solid var(--slateBorderLight);
+  border-radius: 6px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.ds-input__field--md { height: 40px; }
+.ds-input__field--sm { height: 32px; }
+
+.ds-input__field:hover:not(.is-disabled):not(.is-error) { border-color: #cbd5e1; }
+
+/* Focus — primary blue border (uses :focus-within so the wrapper reacts) */
+.ds-input__field:focus-within:not(.is-disabled) {
+  border-color: var(--primarySurfaceDefault);
+}
+
+.ds-input__field.is-error { border-color: var(--errorBorderDefault); }
+
+.ds-input__field.is-disabled {
+  background-color: var(--slateSurfaceSubtle);
+  border-color: var(--slateBorderLight);
+}
+
+/* The actual input element */
+.ds-input__control {
+  flex: 1 0 0;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--slateTextBody);
+  padding: 0;
+}
+.ds-input__control::placeholder { color: var(--slateTextDisabled); }
+.ds-input__control:disabled { color: var(--slateTextDisabled); cursor: not-allowed; }
+
+.ds-input__affix {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--slateTextSubtle);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* Helper / error text */
+.ds-input__helper {
+  margin: 0;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--slateTextSubtle);
+}
+.ds-input__helper.is-error { color: var(--errorTextBody); }
