@@ -55,6 +55,7 @@ function ConversationTab({ item }) {
   // Voice has no right panel of its own in the storybook, so it uses the SMS one (as in the Voice inbox).
   const panel = (
     <LinkedRightPanel
+      canLink={false}
       channel={item.channel === 'voice' ? 'sms' : item.channel}
       ticketId={source.ticketId}
       inboxName={item.inbox}

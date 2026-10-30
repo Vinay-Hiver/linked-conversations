@@ -161,7 +161,8 @@ function linkedConversationsSection(linked: LinkedConversation[], onLinkClick?: 
     <RightPanelSection key="linked" id="linked" title="Linked conversations" icon={<MessagePlusSquare />} defaultExpanded>
       {/* paddingTop matches the section's 16px bottom padding, so the content sits evenly between header and edge. */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%', paddingTop: 16 }}>
-        <Button variant="secondary-filled" size="sm" style={{ width: '100%' }} onClick={onLinkClick}>Link</Button>
+        {/* No Link button when linking is not offered (for example inside the conversation viewer) */}
+        {onLinkClick && <Button variant="secondary-filled" size="sm" style={{ width: '100%' }} onClick={onLinkClick}>Link</Button>}
         {linked.length === 0 ? (
           <p style={{ margin: 0, font: 'var(--fontWeightRegular) 14px/20px var(--fontFamily)', color: 'var(--slateTextSubtle)' }}>
             Link and track related conversations from one place for faster context and resolutions.
@@ -274,7 +275,7 @@ export function LinkedConversationsView({ linked, onBack, onLinkClick, onUnlink,
         <h2 className="hot-rp-linked-view__title">Linked conversations</h2>
       </div>
       <div className="hot-rp-linked-view__body">
-        <Button variant="secondary-filled" size="sm" style={{ width: '100%', flex: 'none' }} onClick={onLinkClick}>Link</Button>
+        {onLinkClick && <Button variant="secondary-filled" size="sm" style={{ width: '100%', flex: 'none' }} onClick={onLinkClick}>Link</Button>}
         {linked.map((c) => <LinkedConversationCard key={c.id} conversation={c} onUnlink={onUnlink} onOpen={c.openable ? onOpenConversation : undefined} />)}
       </div>
     </aside>

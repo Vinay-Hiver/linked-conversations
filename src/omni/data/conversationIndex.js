@@ -18,7 +18,8 @@ const email = conversationsData.map((c) => ({
   subject: c.subject,
   snippet: c.messages?.[0]?.body?.replace(/\s+/g, ' ') || c.preview,
   date: c.time,
-  searchText: [c.sender, c.subject, c.preview, ...(c.messages || []).map((m) => m.body)].join(' '),
+  // Ticket ID and the senders' email addresses are searchable too.
+  searchText: [c.ticketId, c.sender, c.subject, c.preview, ...(c.messages || []).flatMap((m) => [m.email, m.body])].filter(Boolean).join(' '),
 }));
 
 const chats = Object.entries(CHANNEL_CHATS).flatMap(([inbox, list]) =>
@@ -51,7 +52,11 @@ const calls = VOICE_CALLS.map((c) => ({
 /** The icon for a conversation: tickets use the ticket icon, everything else its channel's. */
 export const iconFor = (c, channelIcons) => (c.ticketId ? 'ticket' : channelIcons[c.channel]);
 
-export const CONVERSATION_INDEX = [...email, ...chats, ...calls];
+// Every phone number in a conversation's search text, as digits only, so a number search ignores
+// formatting: "5550110" matches "+1 (555) 0110".
+const withPhoneDigits = (c) => ({ ...c, phoneDigits: (c.searchText.match(/\+?[\d][\d\s().-]{5,}\d/g) || []).map((p) => p.replace(/\D/g, '')).join(' ') });
+
+export const CONVERSATION_INDEX = [...email, ...chats, ...calls].map(withPhoneDigits);
 
 export const conversationById = (id) => CONVERSATION_INDEX.find((c) => c.id === String(id));
 
@@ -59,9 +64,17 @@ export const conversationById = (id) => CONVERSATION_INDEX.find((c) => c.id === 
 export function searchConversations(query, { inboxes, excludeId } = {}) {
   const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   if (words.length === 0) return [];
+  // A word that looks like (part of) a phone number also matches its digits, whatever the formatting.
+  const matches = (c, w) => {
+    // A full ticket ID ("tkt#3") matches that ticket only, not TKT#30 or TKT#33.
+    if (/^tkt#\d+$/.test(w)) return c.ticketId?.toLowerCase() === w;
+    if (c.searchText.toLowerCase().includes(w)) return true;
+    const digits = w.replace(/[\s().+-]/g, '');
+    return /^\d{3,}$/.test(digits) && c.phoneDigits.includes(digits);
+  };
   return CONVERSATION_INDEX.filter((c) =>
     c.id !== String(excludeId)
     && (!inboxes || inboxes.includes(c.inbox))
-    && words.every((w) => c.searchText.toLowerCase().includes(w))
+    && words.every((w) => matches(c, w))
   );
 }

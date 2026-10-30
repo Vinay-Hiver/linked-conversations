@@ -14,7 +14,8 @@ import { useConversationFields } from '../../ConversationFields';
  * which swaps the panel for the full list). Links are groups: unlinking removes a
  * conversation from the whole group, after a confirmation.
  */
-export default function LinkedRightPanel({ conversationId, ...panelProps }) {
+// `canLink={false}` hides the Link button (used in the conversation viewer, so no modal opens on top of a modal).
+export default function LinkedRightPanel({ conversationId, canLink = true, ...panelProps }) {
   const { linksOf, link, unlink } = useLinkedConversations();
   const { user } = useCurrentUser();
   const viewer = useConversationViewer();
@@ -47,7 +48,7 @@ export default function LinkedRightPanel({ conversationId, ...panelProps }) {
       openable: viewer.canOpen(c.id),
     }));
 
-  const openModal = id ? () => setOpen(true) : undefined;
+  const openModal = id && canLink ? () => setOpen(true) : undefined;
 
   return (
     <>

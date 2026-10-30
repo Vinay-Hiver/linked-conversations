@@ -6,7 +6,7 @@ import './LinkConversationModal.css';
 import '../modalMotion.css';
 import { useModalExit } from '../modalMotion';
 
-/** Confirms an unlink (copy from the design: the conversation leaves the linked list and is not deleted). */
+/** Confirms an unlink: the conversation leaves the whole group and is not deleted. */
 export default function UnlinkConfirmModal({ onConfirm, onClose }) {
   const [closing, exit] = useModalExit();
   const close = () => exit(onClose);
@@ -29,7 +29,8 @@ export default function UnlinkConfirmModal({ onConfirm, onClose }) {
             </>
           )}
         >
-          <ModalText>This conversation will be removed from the linked list. It won't be deleted.</ModalText>
+          {/* Says the unlink applies to the whole group (linked-conversations-context.md 5.2) */}
+          <ModalText>This conversation will be unlinked from all conversations in this group. It won't be deleted.</ModalText>
         </Modal>
       </div>
     </div>,
